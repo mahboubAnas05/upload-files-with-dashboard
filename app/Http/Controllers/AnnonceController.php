@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Annonce;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use function PHPUnit\Framework\returnValue;
 
@@ -42,8 +43,17 @@ class AnnonceController extends Controller
             'ville' => 'required | string | max:10',
             'superficie' => 'required | integer | min:80 | max:1000',
             'neuf' => 'required', 
-            'prix' => 'required | numeric | min:1'
-        ]);
+            'prix' => 'required | numeric | min:1',
+            'img' => 'nullable | image | mimes:jpg,jpeg,png,gif | max:2048' //2048 octec
+         ]);
+
+         if ($request->hasFile('img'))
+         {
+            $file = $request->file('img'); // hna kjib iimage b request ou kat requperiha l $file
+            $filename = Str::slug($request->titre . '-' . time() . '.' . $file->getClientOriginalExtension() ); //hna katsami l'image
+
+            $path = $file->storeAs('annonces', $filename, 'public');
+         }
         
         $annonce = new Annonce;
 
@@ -54,7 +64,8 @@ class AnnonceController extends Controller
         $annonce->superficie = $request->input('superficie');
         $annonce->neuf = $request->input('neuf');
         $annonce->prix = $request->input('prix');
-
+        $annonce->img = $path ?? null;
+        
         $annonce->save();
 
         return redirect()->back()->with('success', 'Ajouter avec success !');
@@ -113,23 +124,5 @@ class AnnonceController extends Controller
         $annonce->delete();
         return redirect()->route('annonces.index')->with('success', 'supprimer avec success');
     }
-    public function dashboard(){
-        return view('annonces.dashboard');
-    }
-    public function count()
-    {
-        
-    }
-    public function sumPt()
-    {
-        
-    }
-    public function avg()
-    {
-        
-    }
-    public function sumSt()
-    {
-        
-    }
+    
 }

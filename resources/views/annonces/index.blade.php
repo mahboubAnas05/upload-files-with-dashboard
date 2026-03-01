@@ -17,12 +17,13 @@
     <a href="{{route('annonces.create')}}" class="btn btn-primary">
        + Nouvelle annonce
     </a>
-    <a href="{{route('annonces.dashboard')}}" class="btn btn-warning">
+    <a href="#" class="btn btn-warning">
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M80-120v-80h800v80H80Zm40-120v-280h120v280H120Zm200 0v-480h120v480H320Zm200 0v-360h120v360H520Zm200 0v-600h120v600H720Z"/></svg>
     </a>
     <table class="table table-scripted table-hover">
         <thead>
             <tr>
+                <th>Image</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Type</th>
@@ -36,6 +37,9 @@
         <tbody>
             @foreach ($annonces as $annonce)
                 <tr>
+                    <td>
+                        <img src="{{ $annonce->img ? asset('storage/'.$annonce->img) : asset('/img/default.jpg')  }}" width="100" height="100" class="rounded" alt="">
+                    </td>
                     <td>{{$annonce->titre}}</td>
                     <td>{{$annonce->description}}</td>
                     <td>{{$annonce->type}}</td>

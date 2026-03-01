@@ -38,8 +38,8 @@
     @enderror
     <div class="mt-3">
         <label for="Etat" class="me-5">Etat</label>
-     <input type="radio" value="{{old('neuf', $annonce->neuf ?? '')}}" name="neuf" value="true" id="" class="form-check-input ms-3 @error('neuf') is-invalid @enderror">Neuf
-     <input type="radio" value="{{old('neuf', $annonce->neuf ?? '')}}" name="neuf" value="false" id="" class="form-check-input ms-3 @error('neuf') is-invalid @enderror">Ancien
+     <input type="radio" {{old('neuf', $annonce->neuf ?? '') == "true" ? 'checked' : ''}} name="neuf" value="true" id="" class="form-check-input ms-3 @error('neuf') is-invalid @enderror">Neuf
+     <input type="radio" {{old('neuf', $annonce->neuf ?? '') == "false" ? 'checked' : ''}} name="neuf" value="false" id="" class="form-check-input ms-3 @error('neuf') is-invalid @enderror">Ancien
      </div>
      @error('neuf')
      <p class="text-danger">{{$message}}</p>
@@ -48,6 +48,7 @@
      @error('prix')
      <p class="text-danger">{{$message}}</p>
     @enderror
+    <input type="file" name="img" id="" class="form-control mt-3">
 
 </body>
 </html>

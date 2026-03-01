@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Annonce;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AnnonceSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class AnnonceSeeder extends Seeder
     public function run(): void
     {
         //
-        Annonce::insert([
+        DB::table('annonces')->insert([
             [
                 'titre' => "Vente d'une maison R+2",
                 'description' => 'une jolie maison est en vente à hay saada',
