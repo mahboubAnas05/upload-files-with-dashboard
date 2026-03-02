@@ -1,29 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <title>Document</title>
-</head>
-<body>
-    
+
      <input type="text" value="{{old('titre', $annonce->titre ?? '')}}" name="titre" id="" class="mt-3 form-control @error('titre') is-invalid @enderror " placeholder="titre">
      @error('titre')
          <p class="text-danger">{{$message}}</p>
      @enderror
-     <textarea name="description" value="{{old('description', $annonce->description ?? '')}}" class="mt-3 form-control @error('description') is-invalid @enderror" placeholder="description"></textarea>
+     <textarea name="description" class="mt-3 form-control @error('description') is-invalid @enderror" placeholder="description">
+        {{old('description', $annonce->description ?? '')}}
+     </textarea>
      @error('description')
      <p class="text-danger">{{$message}}</p>
     @enderror
      <select name="type" value="{{old('type', $annonce->type ?? '')}}" id="" class="mt-3 form-select @error('type') is-invalid @enderror">
         <option value="">Choisir le type d'annonce</option>
-        <option value="Maison">Maison</option>
-        <option value="Appartement">Appartement</option>
-        <option value="Terrain">Terrain</option>
-        <option value="Magasin">Magasin</option>
-        <option value="Villa">Villa</option>
+        <option {{old('type', $annonce->type ?? '') === "Maison" ? 'selected' : ''}} value="Maison">Maison</option>
+        <option {{old('type', $annonce->type ?? '') === "Appartement" ? 'selected' : ''}} value="Appartement">Appartement</option>
+        <option {{old('type', $annonce->type ?? '') === "Terrain" ? 'selected' : ''}} value="Terrain">Terrain</option>
+        <option {{old('type', $annonce->type ?? '') === "Magasin" ? 'selected' : ''}} value="Magasin">Magasin</option>
+        <option {{old('type', $annonce->type ?? '') === "Villa" ? 'selected' : ''}} value="Villa">Villa</option>
      </select>
      @error('type')
      <p class="text-danger">{{$message}}</p>
@@ -48,7 +40,5 @@
      @error('prix')
      <p class="text-danger">{{$message}}</p>
     @enderror
+  
     <input type="file" name="img" id="" class="form-control mt-3">
-
-</body>
-</html>

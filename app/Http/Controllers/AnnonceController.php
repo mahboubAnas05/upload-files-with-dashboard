@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Annonce;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 use function PHPUnit\Framework\returnValue;
@@ -50,13 +51,13 @@ class AnnonceController extends Controller
          if ($request->hasFile('img'))
          {
             $file = $request->file('img'); // hna kjib iimage b request ou kat requperiha l $file
-            $filename = Str::slug($request->titre . '-' . time() . '.' . $file->getClientOriginalExtension() ); //hna katsami l'image
+            $filename = Str::slug($request->titre . '-' . time()).'.'.$file->getClientOriginalExtension(); //hna katsami l'image
 
             $path = $file->storeAs('annonces', $filename, 'public');
          }
         
         $annonce = new Annonce;
-
+        
         $annonce->titre = $request->input('titre');
         $annonce->description = $request->input('description');
         $annonce->type = $request->input('type');
@@ -95,7 +96,7 @@ class AnnonceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Annonce $annonce)
     {
         //
         $request->validate([
@@ -105,10 +106,33 @@ class AnnonceController extends Controller
             'ville' => 'required | string | max:10',
             'superficie' => 'required | integer | min:80 | max:1000',
             'neuf' => 'required', 
-            'prix' => 'required | numeric | min:1'
+            'prix' => 'required | numeric | min:1',
+            'img' => 'nullable | image | mimes:jpg,jpeg,png,gif | max:2048' //2048 octec
+
         ]);
+
+        if($request->hasFile('img')){
+            if($annonce->img){
+                Storage::disk('public')->delete($annonce->img);
+            }
         
-        Annonce::findOrFail($id)->update($request->all());
+            $file = $request->file('img');
+            $filename = Str::slug($annonce->titre.'-'.time()).'.'.$file->getClientOriginalExtension();
+            $path = $file->storeAs('annonces', $filename, 'public');
+        }
+
+        
+        Annonce::findOrFail($annonce->id)->update([
+            'titre' => $request->titre,
+            'description' => $request->description,
+            'type' => $request->type,
+            'ville' => $request->ville,
+            'superficie' => $request->superficie,
+            'neuf' => $request->neuf, 
+            'prix' => $request->prix,
+            'img' => $path
+
+        ]);
         return redirect()->route('annonces.index')->with('success', 'modifier avec success');
 
 
@@ -117,10 +141,14 @@ class AnnonceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Annonce $annonce)
     {
         //
-        $annonce = Annonce::findOrFail($id);
+        if ($annonce->img){
+            Storage::disk('public')->delete($annonce->img);
+        }
+
+        $annonce = Annonce::findOrFail($annonce->id);
         $annonce->delete();
         return redirect()->route('annonces.index')->with('success', 'supprimer avec success');
     }
