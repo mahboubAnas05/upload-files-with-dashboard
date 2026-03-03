@@ -14,10 +14,10 @@
         </header>
         
         <div class="container-fluid flex-grow-1 h-100 row">
-            <div class="col-md-1 col-sm-12">
+            <div class="col-md-1 col-sm-12 bg-light">
                 @include('sideBar')
             </div>
-            <div class="col-md-11 col-sm-12 col-8 bg-light">
+            <div class="col-md-11 col-sm-12 col-8 bg-white d-flex flex-column">
                 @yield('content')
             </div>
         </div>

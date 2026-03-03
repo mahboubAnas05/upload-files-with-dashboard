@@ -57,7 +57,7 @@ class AnnonceController extends Controller
          }
         
         $annonce = new Annonce;
-        
+
         $annonce->titre = $request->input('titre');
         $annonce->description = $request->input('description');
         $annonce->type = $request->input('type');
@@ -151,6 +151,16 @@ class AnnonceController extends Controller
         $annonce = Annonce::findOrFail($annonce->id);
         $annonce->delete();
         return redirect()->route('annonces.index')->with('success', 'supprimer avec success');
+    }
+    public function dashboard()
+    {
+        $stats = [
+            'total' => Annonce::count(),
+            'prix_total' => Annonce::sum('prix'),
+            'prix_moyen' => Annonce::avg('prix'),
+            'superficie' => Annonce::sum('superficie')
+        ];
+        return view('annonces.dashboard', compact('stats'));
     }
     
 }

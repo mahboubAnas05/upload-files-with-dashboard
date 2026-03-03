@@ -5,7 +5,7 @@
         </h2>
     </div>
     <div>
-        <a href="#" class="btn btn-light">
+        <a href="{{route('dashboard')}}" class="btn btn-light">
             Dashboard
         </a>
     </div>

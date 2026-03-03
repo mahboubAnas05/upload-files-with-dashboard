@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <h1 class="text-center mt-3">
-    Liste des annonces
+    Liste des Annonces
 </h1>
 @session('success')
     <p class="alert alert-success">{{session('success')}}</p>

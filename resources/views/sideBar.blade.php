@@ -1,4 +1,4 @@
-<div class="bg-white d-sm-flex justify-content-sm-around flex-md-column vh-md-100 p-3">
+<div class="bg-md-light d-sm-flex justify-content-sm-around flex-md-column p-3">
 
     <div class="border-bottom p-md-3 border-sm-none">
         <a href="{{route('annonces.index')}}" class="text-decoration-none">
@@ -12,7 +12,7 @@
         </a>
     </div>
     <div class="border-bottom p-md-3 border-sm-none">
-        <a href="" class="text-decoration-none">
+        <a href="{{route('dashboard')}}" class="text-decoration-none">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#0167ff"><path d="M80-120v-80h800v80H80Zm40-120v-280h120v280H120Zm200 0v-480h120v480H320Zm200 0v-360h120v360H520Zm200 0v-600h120v600H720Z"/></svg>
         </a>
     </div>
