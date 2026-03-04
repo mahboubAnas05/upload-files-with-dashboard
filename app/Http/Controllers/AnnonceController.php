@@ -15,10 +15,51 @@ class AnnonceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, Annonce $annonce)
     {
         // 
-        $annonces = Annonce::all();
+
+        $query = Annonce::query();
+
+        if ($request->filled('titre')){
+            $titre = $request->input('titre');
+            $query->where('titre', 'LIKE', "$titre%");
+            //$query->where('smia dial champ db machi filter', 'like', "$titre%");
+        }
+
+        if($request->filled('type')){
+            $type = $request->input('type');
+            $query->where('type', 'LIKE', "$type%");
+        }
+
+        if($request->filled('ville')){
+            $type = $request->input('type');
+            $query->where('type', 'LIKE', "$type%");
+        }
+
+        if($request->filled('min') || $request->filled('max')){
+            if($request->filled('min')){
+                $min = $request->input('min');
+                $query->where('superficie', "<=", "$min");
+            }
+            if($request->filled('max')){
+                $max = $request->input('max');
+                $query->where('superficie', '>=', "$max");
+            }
+        }
+
+        if($request->filled('prix')){
+            $prix = $request->input('prix');
+            $query->where('prix', ">=", "$prix");
+        }
+
+        if($request->filled('neuf')){
+            $neuf = $request->input('neuf');
+            $query->where('neuf', "$neuf");
+        }
+
+        
+        $annonces = $query->get();
         return view('annonces.index', compact('annonces'));
     }
 

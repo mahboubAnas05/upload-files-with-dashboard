@@ -11,6 +11,7 @@
     @session('success')
         <p class="alert alert-success">{{session('success')}}</p>
     @endsession
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -18,9 +19,9 @@
                 <li>{{$error}}</li>
                 @endforeach
             </ul>
-        </div>
-        
+        </div>   
     @endif
+
     <form action="{{route('annonces.update', $annonce)}}" method="post" enctype="multipart/form-data" >
         @csrf
         @method('PUT')
@@ -29,6 +30,7 @@
             modifier
         </button>
     </form>
+    
 </div>
 
 @endsection

@@ -9,6 +9,72 @@
 <a href="{{route('annonces.create')}}" class="btn btn-primary">
    + Nouvelle annonce
 </a>
+
+<form action="{{route("annonces.index")}}" method="get">
+    <div class="bg-light p-3 border mt-3 rounded">
+        <div class="d-md-flex gap-2">
+            <div>
+                <label for="Nom du bien" class="fw-bold">Nom du bien</label>
+                <br>
+                <input type="text" name="titre" value="{{request('titre')}}" id="" class="form-control" placeholder="Ex: villa...">
+            </div>
+            <div>
+                <label for="type" class="fw-bold">Type</label>
+                <br>
+                <select name="type" id="" value="{{request("type")}}" class="form-select">
+                    <option value="">Tous</option>
+                    <option {{request("type") === 'maison' ? 'selected' : ""}} value="maison">maison</option>
+                    <option {{request("type") === 'appartement' ? 'selected' : ""}} value="appartement">appartement</option>
+                    <option {{request("type") === 'terrain' ? 'selected' : ""}} value="terrain">terrain</option>
+                    <option {{request("type") === 'magasin' ? 'selected' : ""}} value="magasin">magasin</option>
+                    <option {{request("type") === 'villa' ? 'selected' : ""}} value="villa">villa</option>
+                </select>
+            </div>
+            <div>
+                <label for="ville" class="fw-bold">Ville</label>
+                <br>
+                <select name="ville" value={{request('ville')}} id="" class="form-select">
+                    <option value="">Tous</option>
+                    <option {{request('ville') === 'casablanca' ? 'selected' : ''}} value="casablanca">casablanca</option>
+                    <option {{request('ville') === 'rabat' ? 'selected' : ''}} value="rabat">rabat</option>
+                    <option {{request('ville') === 'fès' ? 'selected' : ''}} value="fès">fès</option>
+                    <option {{request('ville') === 'zagoura' ? 'selected' : ''}} value="zagoura">zagoura</option>
+                    <option {{request('ville') === 'tounate' ? 'selected' : ''}} value="tounate">tounate</option>
+                </select>
+            </div>
+            <div>
+                <label for="Superficie" class="fw-bold">Superficie (m²)</label>
+                <div class="d-flex gap-2">
+                    <div><input value="{{request('min')}}" step="0.1" type="number" name="min" placeholder="Min" class="form-control"></div>
+                    <div><input value="{{request('max')}}" step="0.1" type="number" name="max" placeholder="Max" class="form-control"></div>
+                </div>
+            </div>
+        </div>
+        <div class="d-md-flex gap-2 align-items-center">
+            <div>
+                <label for="Prix Max" class="fw-bold">Prix Max</label>
+                <br>
+                <input step="0.1" value="{{request('prixMax')}}" type="number" name="prixMax" id="" class="form-control" placeholder="DH">
+            </div>
+            <div>
+                <label for="etat" class="fw-bold">Etat</label>
+                <div class="p-3 bg-white border rounded">
+                    <input {{request('neuf') === 'true' ? 'checked' : ''}} value="true" type="radio" name="neuf" id="" class="form-check-input ">
+                    <label for="etat">Neuf</label>
+                    <input {{request('neuf') === 'false' ? 'checked' : ''}} value="false" type="radio" name="neuf" id="" class="form-check-input ms-3">
+                    <label for="etat">Ancien</label>
+                </div>
+            </div>
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary fw-bold">Appliquer</button>
+                <a href="{{route('annonces.index')}}" class="btn btn-outline-dark fw-bold">
+                    Reset
+                </a>
+            </div>
+        </div>
+    </div>    
+</form>
+
 <div style="overflow-x: auto">
 <table class="table table-scripted table-hover mt-3">
     <thead>
