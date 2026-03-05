@@ -203,5 +203,10 @@ class AnnonceController extends Controller
         ];
         return view('annonces.dashboard', compact('stats'));
     }
+    public function home()
+    {
+        $annonces = Annonce::all();
+        return view('annonces.home', compact('annonces'));
+    }
     
 }

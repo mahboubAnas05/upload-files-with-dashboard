@@ -1,8 +1,13 @@
-<div class="bg-md-light d-sm-flex justify-content-sm-around flex-md-column p-3">
+<div class="bg-md-light d-flex d-md-block justify-content-around p-3">
 
     <div class="border-bottom p-md-3 border-sm-none">
-        <a href="{{route('annonces.index')}}" class="text-decoration-none">
+        <a href="{{route('home')}}" class="text-decoration-none">
             <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#0167ff" ><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+        </a>
+    </div>
+    <div class="border-bottom p-md-3 border-sm-none">
+        <a href="{{route('annonces.index')}}" class="text-decoration-none">
+            <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#0167ff"><path d="M760-200v-120H200v120h560Zm0-200v-160H200v160h560Zm0-240v-120H200v120h560ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Z"/></svg>
         </a>
     </div>
     <div class="border-bottom p-md-3 border-sm-none">

@@ -17,7 +17,7 @@
             <div class="col-md-1 col-sm-12 bg-light">
                 @include('sideBar')
             </div>
-            <div class="col-md-11 col-sm-12 col-8 bg-white d-flex flex-column">
+            <div class="col-md-11 col-12 bg-white d-flex flex-column">
                 @yield('content')
             </div>
         </div>
