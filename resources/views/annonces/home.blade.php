@@ -20,7 +20,7 @@
     </h1>
 
     <div class="container-fluid my-3">
-        <div class="row">
+        <div class="row gap-1">
             @forelse ($annonces as $annonce)
             <div class="border rounded col-12 col-md-4 rounded">
                 <div class="card-img-top">

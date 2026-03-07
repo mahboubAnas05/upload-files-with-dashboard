@@ -18,7 +18,7 @@
     <option {{old('type', $annonce->type ?? '') === "Appartement" ? 'selected' : ''}} value="Appartement">Appartement</option>
     <option {{old('type', $annonce->type ?? '') === "Terrain" ? 'selected' : ''}} value="Terrain">Terrain</option>
     <option {{old('type', $annonce->type ?? '') === "Magasin" ? 'selected' : ''}} value="Magasin">Magasin</option>
-<option {{old('type', $annonce->type ?? '') === "Villa" ? 'selected' : ''}} value="Villa">Villa</option>
+    <option {{old('type', $annonce->type ?? '') === "Villa" ? 'selected' : ''}} value="Villa">Villa</option>
 </select>
 @error('type')
     <p class="text-danger">{{$message}}</p>

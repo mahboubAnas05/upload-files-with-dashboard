@@ -20,7 +20,7 @@
         
         <div class="d-flex align-items-center gap-2 bg-light rounded border p-3 mt-3">
             <div class="p-3 alert alert-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#0167ff" ><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#0167ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             </div>
             <div>
                 <h4 class="text-primary">
@@ -47,11 +47,11 @@
         </div>
 
         <div class="d-flex align-items-center gap-2 bg-light rounded border p-3 mt-3">
-            <div class="p-3 alert alert-warning">
-                <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#ffc107"><path d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"/></svg>
+            <div class="p-3 alert alert-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#6c757d"><path d="m136-240-56-56 296-298 160 160 208-206H640v-80h240v240h-80v-104L536-320 376-480 136-240Z"/></svg>
             </div>
             <div>
-                <h4 class="text-warning">
+                <h4 class="text-secondary">
                     Prix Moyen
                     <br>
                     <span class="fw-bold text-dark">{{$stats['prix_moyen']}} k</span>
